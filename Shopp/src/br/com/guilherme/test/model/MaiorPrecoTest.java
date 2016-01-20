@@ -26,7 +26,9 @@ public class MaiorPrecoTest {
 	
 	@Test
 	public void testUmItem(){
-		carrinho.addItem(new Item("Telefone",1,110.90));
+		this.carrinho = new CarrinhoComprasBuilder()
+		.addItem(110.90)
+		.cria();		
 		double resultado = carrinho.maiorValor();
 		double resultadoEsperado = 110.90;
 		assertEquals(resultadoEsperado, resultado,0.0001);
@@ -34,10 +36,9 @@ public class MaiorPrecoTest {
 	
 	@Test
 	public void testMaisItens(){
-		carrinho.addItem(new Item("Telefone",3,110.90));
-		carrinho.addItem(new Item("Geladeira",1,910.90));
-		carrinho.addItem(new Item("Fogäo",1,1200.00));
-		carrinho.addItem(new Item("Notebook",2,3500.50));
+		this.carrinho = new CarrinhoComprasBuilder()
+				.addItem(110.9,910.9,1200.00,3500.50)
+				.cria();
 		double resultado = carrinho.maiorValor();
 		double resultadoEsperado = 3500.50;
 		assertEquals(resultadoEsperado, resultado,0.0001);
